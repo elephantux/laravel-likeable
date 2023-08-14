@@ -179,11 +179,7 @@ trait Likeable
 
         if ($counter) {
             $counter->count--;
-            if ($counter->count) {
-                $counter->save();
-            } else {
-                $counter->delete();
-            }
+            $counter->save();
         }
     }
 
