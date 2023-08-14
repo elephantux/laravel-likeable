@@ -74,12 +74,14 @@ trait Likeable
             $like = $this->likes()
                 ->where('user_id', '=', $userId)
                 ->first();
-    
-            if (!$like) {
+
+            if ($like) {
                 return;
             }
-    
-            $like->delete();
+
+            $like = new Like();
+            $like->user_id = $userId;
+            $this->likes()->save($like);
         }
 
         $this->decrementLikeCount();
@@ -180,6 +182,10 @@ trait Likeable
         if ($counter) {
             $counter->count--;
             $counter->save();
+        } else {
+            $counter = new LikeCounter;
+            $counter->count = -1;
+            $this->likeCounter()->save($counter);
         }
     }
 
