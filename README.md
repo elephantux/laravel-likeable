@@ -9,7 +9,7 @@ Trait for Laravel Eloquent models to allow easy implementation of a "like" or "f
 
 #### Composer Install
 
-    composer require rtconner/laravel-likeable
+    composer require elephantux/laravel-likeable
 
 #### Then run the migrations
 
